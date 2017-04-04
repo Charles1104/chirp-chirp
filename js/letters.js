@@ -13,11 +13,27 @@ var counter = {
   "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
   "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
   "y" : 0,  "z" : 0
-}
+};
 
 function countLetters(counter, sample_text){
   // FIX ME
+
+  sample_text = sample_text.toLowerCase();
+
+  if(sample_text.length === 0){
+    return counter;
+  }
+
+  length = sample_text.length;
+  counter[sample_text[length-1]] += 1;
+  length--;
+  sample_text = sample_text.substring(0,length);
+
+  return countLetters(counter, sample_text);
+
 }
+
+countLetters(counter, "toto");
 
 $(document).ready(function(){
   countLetters(counter, sample_text);
